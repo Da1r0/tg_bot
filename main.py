@@ -16,6 +16,10 @@ async def start_command(message: Message):
     await message.answer('Привет!\nЯ бот, которого создал человек из ВКИ НГУ.\nМеня зовут Vik, а тебя как зовут?')
 
 
+@dp.message(Text(text='Ответь'))
+async def reply(message: Message):
+    await message.reply('Ответил')
+
 @dp.message(Command(commands=['help']))
 async def help_command(message: Message):
     await message.answer('Меня зовут Vik, и у тебя возникли вопросы, как со мной общаться?\n'
@@ -30,8 +34,24 @@ async def easter_egg(message: Message):
 
 @dp.message()
 async def echo(message: Message):
-    await message.answer(message.text)
+    await message.send_copy(message.chat.id)
 
+
+# @dp.message(F.content_type == ContentType.PHOTO)
+# async def echo_photo(message: Message):
+#     await message.answer_photo(message.photo[0].file_id)
+#
+# @dp.message(F.content_type == ContentType.STICKER)
+# async def echo_sticker(message: Message):
+#     await message.answer_sticker(message.sticker.file_id)
+#
+# @dp.message(F.content_type == ContentType.VOICE)
+# async def echo_voice(message: Message):
+#     await message.answer_voice(message.voice.file_id)
+
+# @dp.message(F.content_type == ContentType.VIDEO)
+# async def echo_video(message: Message):
+#     await message.answer_video(message.video.file_id)
 
 async def main():
     try:

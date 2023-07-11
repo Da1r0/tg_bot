@@ -11,4 +11,3 @@ class TGBot:
 
 dotenv.load_dotenv()
 config = TGBot(token=os.getenv('BOT_TOKEN'))
-print(config.token)
